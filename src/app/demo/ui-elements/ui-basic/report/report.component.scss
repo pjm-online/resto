@@ -1,0 +1,19 @@
+// ::ng-deep {
+//   html {
+//     overflow: hidden !important;
+//   }
+// }
+
+.div-table {
+  overflow-y: scroll;
+  height: calc(100vh - 140px);
+}
+
+table {
+  thead {
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    z-index: 10;
+  }
+}

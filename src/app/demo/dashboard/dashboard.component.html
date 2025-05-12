@@ -1,0 +1,61 @@
+<div class="row">
+  @for (sale of salesNode1; track sale) {
+    <div class="{{ sale.design }} col-xl-4">
+      <app-card [hidHeader]="true">
+        <a class="mb-4" (click)="showReport(sale)">
+          <b>{{ sale.title }}</b>
+        </a>
+        <div class="row d-flex align-items-center">
+          <div class="col-9">
+            <h3 class="f-w-300 d-flex align-items-center m-b-0">
+              <i class="feather {{ sale.icon }} f-30 m-r-10"></i>
+              {{ sale.amount.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
+            </h3>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  }
+</div>
+
+<div class="row">
+  @for (sale of salesNode2; track sale) {
+    <div class="{{ sale.design }} col-xl-4">
+      <app-card [hidHeader]="true">
+        <a class="mb-4" (click)="showReport(sale)">
+          <b>{{ sale.title }}</b>
+        </a>
+        <div class="row d-flex align-items-center">
+          <div class="col-9">
+            <h3 class="f-w-300 d-flex align-items-center m-b-0">
+              <i class="feather {{ sale.icon }} f-30 m-r-10"></i>
+              {{ sale.amount.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
+            </h3>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  }
+</div>
+
+<!-- <div class="row">
+  <app-card cardTitle="List of Store Banches" blockClass="p-0">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <tbody>
+          @for (r of reports; track r) {
+            <tr class="unread">
+              <td># {{ r.id }}</td>
+              <td>
+                <h6 class="mb-1">
+                  <b>{{ r.title }}</b>
+                </h6>
+                <p class="m-0">{{ r.text }}</p>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div> -->

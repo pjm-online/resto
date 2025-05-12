@@ -1,0 +1,39 @@
+<div class="col-xl-12">
+  <app-card
+    cardTitle="{{ title }} (TOTAL AMOUNT: {{ total.toLocaleString('en-US', { maximumFractionDigits: 2 }) }})"
+    [options]="false"
+    blockClass="table-border-style"
+  >
+    <div class="table-responsive div-table">
+      <table class="table table-styling">
+        <thead>
+          <tr class="table-primary">
+            @for (c of columns; track c) {
+              <th>{{ c.label }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (d of data; track d) {
+            <tr scope="row">
+              @for (c of columns; track c) {
+                @if (c.label === 'Date') {
+                  <td>
+                    {{ parseDate(d[c.idName]) }}
+                  </td>
+                } @else {
+                  <td>
+                    {{ d[c.idName] }}
+                  </td>
+                }
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+      <div style="padding-left: 12px" class="row">
+        <h5>TOTAL AMOUNT: {{ total.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}</h5>
+      </div>
+    </div>
+  </app-card>
+</div>

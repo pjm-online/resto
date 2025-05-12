@@ -1,0 +1,55 @@
+<div class="col-xl-12">
+  <app-card [hidHeader]="true" [options]="false" blockClass="table-border-style">
+    <div class="div-header">
+      <h5 class="align-right">
+        {{ title }}
+        <br />
+        (TOTAL AMOUNT: {{ total.toLocaleString('en-US', { maximumFractionDigits: 2 }) }})
+      </h5>
+      <div class="align-right">
+        <nz-date-picker class="col-md-4" [(ngModel)]="dateFrom"></nz-date-picker>
+        <nz-date-picker class="col-md-4" [(ngModel)]="dateTo"></nz-date-picker>
+        @if (isBusy) {
+          <button class="btn-rounded btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span>&nbsp;Loading...</span>
+          </button>
+        } @else {
+          <button class="btn-rounded btn btn-primary" [disabled]="dateFrom === null" (click)="search()">Search</button>
+        }
+      </div>
+    </div>
+
+    <div class="table-responsive div-table">
+      <table class="table table-styling">
+        <thead>
+          <tr class="table-primary">
+            @for (c of columns; track c) {
+              <th>{{ c.label }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (d of data; track d) {
+            <tr scope="row">
+              @for (c of columns; track c) {
+                @if (c.label === 'Date') {
+                  <td>
+                    {{ d[c.idName] }}
+                  </td>
+                } @else {
+                  <td>
+                    {{ d[c.idName] }}
+                  </td>
+                }
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+      <div style="padding-left: 12px" class="row">
+        <h5>TOTAL AMOUNT: {{ total.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}</h5>
+      </div>
+    </div>
+  </app-card>
+</div>
